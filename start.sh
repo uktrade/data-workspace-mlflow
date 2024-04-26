@@ -1,12 +1,14 @@
 #!/bin/sh
 
-set -e
-
 (
     cd "$(dirname "$0")"
 
     echo "Running migrations..."
     mlflow db upgrade $DATABASE_URI
+
+    # db upgrade only works without error strictly after the server has run at least once
+    # So we exit on failure only after we run db upgrade
+    set -e
 
     echo "Starting mlflow server and proxy..."
     parallel --will-cite --line-buffer --jobs 2 --halt now,done=1 ::: \
