@@ -1,7 +1,7 @@
 mlflow
 psycopg2
 boto3
-sklearn
+scikit-learn
 aiohttp
 cryptography
 ecs-logging
