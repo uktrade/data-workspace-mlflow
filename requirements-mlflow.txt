@@ -10,6 +10,8 @@ aiosignal==1.2.0
     # via aiohttp
 alembic==1.8.0
     # via mlflow
+aniso8601==9.0.1
+    # via graphene
 async-timeout==4.0.2
     # via aiohttp
 attrs==21.4.0
@@ -58,6 +60,14 @@ gitdb==4.0.9
     # via gitpython
 gitpython==3.1.41
     # via mlflow
+graphene==3.3
+    # via mlflow
+graphql-core==3.2.3
+    # via
+    #   graphene
+    #   graphql-relay
+graphql-relay==3.2.0
+    # via graphene
 greenlet==3.0.3
     # via sqlalchemy
 gunicorn==20.1.0
@@ -93,7 +103,7 @@ markupsafe==2.1.1
     #   werkzeug
 matplotlib==3.7.1
     # via mlflow
-mlflow==2.10.2
+mlflow==2.12.1
     # via -r requirements-mlflow.in
 multidict==6.0.2
     # via
