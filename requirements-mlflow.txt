@@ -72,6 +72,8 @@ graphql-core==3.2.3
     #   graphql-relay
 graphql-relay==3.2.0
     # via graphene
+greenlet==3.0.3
+    # via sqlalchemy
 gunicorn==22.0.0
     # via mlflow
 idna==3.7
@@ -169,7 +171,7 @@ pyyaml==6.0
     # via mlflow
 querystring-parser==1.2.4
     # via mlflow
-requests==2.31.0
+requests==2.32.0
     # via
     #   docker
     #   mlflow
