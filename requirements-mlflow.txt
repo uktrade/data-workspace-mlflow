@@ -26,7 +26,7 @@ botocore==1.27.17
     #   s3transfer
 cachetools==5.3.3
     # via mlflow
-certifi==2023.7.22
+certifi==2024.7.4
     # via requests
 cffi==1.15.0
     # via cryptography
@@ -72,6 +72,8 @@ graphql-core==3.2.3
     #   graphql-relay
 graphql-relay==3.2.0
     # via graphene
+greenlet==3.0.3
+    # via sqlalchemy
 gunicorn==22.0.0
     # via mlflow
 idna==3.7
