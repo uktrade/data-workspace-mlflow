@@ -72,6 +72,8 @@ graphql-core==3.2.3
     #   graphql-relay
 graphql-relay==3.2.0
     # via graphene
+greenlet==3.0.3
+    # via sqlalchemy
 gunicorn==22.0.0
     # via mlflow
 idna==3.7
@@ -213,7 +215,7 @@ wrapt==1.16.0
     # via deprecated
 yarl==1.7.2
     # via aiohttp
-zipp==3.8.0
+zipp==3.19.1
     # via
     #   importlib-metadata
     #   importlib-resources
