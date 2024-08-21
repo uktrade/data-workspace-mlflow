@@ -4,7 +4,9 @@
 #
 #    pip-compile requirements-mlflow.in
 #
-aiohttp==3.9.4
+aiohappyeyeballs==2.3.5
+    # via aiohttp
+aiohttp==3.10.2
     # via -r requirements-mlflow.in
 aiosignal==1.2.0
     # via aiohttp
