@@ -27,7 +27,9 @@ botocore==1.27.17
     #   boto3
     #   s3transfer
 cachetools==5.3.3
-    # via mlflow
+    # via
+    #   google-auth
+    #   mlflow-skinny
 certifi==2024.7.4
     # via requests
 cffi==1.15.0
@@ -37,15 +39,17 @@ charset-normalizer==2.0.12
 click==8.1.3
     # via
     #   flask
-    #   mlflow
+    #   mlflow-skinny
 cloudpickle==2.1.0
-    # via mlflow
+    # via mlflow-skinny
 contourpy==1.0.7
     # via matplotlib
 cryptography==42.0.4
     # via -r requirements-mlflow.in
 cycler==0.11.0
     # via matplotlib
+databricks-sdk==0.30.0
+    # via mlflow-skinny
 deprecated==1.2.14
     # via opentelemetry-api
 docker==5.0.3
@@ -53,7 +57,7 @@ docker==5.0.3
 ecs-logging==2.0.0
     # via -r requirements-mlflow.in
 entrypoints==0.4
-    # via mlflow
+    # via mlflow-skinny
 flask==2.3.2
     # via mlflow
 fonttools==4.43.0
@@ -65,7 +69,9 @@ frozenlist==1.3.0
 gitdb==4.0.9
     # via gitpython
 gitpython==3.1.41
-    # via mlflow
+    # via mlflow-skinny
+google-auth==2.34.0
+    # via databricks-sdk
 graphene==3.3
     # via mlflow
 graphql-core==3.2.3
@@ -74,8 +80,6 @@ graphql-core==3.2.3
     #   graphql-relay
 graphql-relay==3.2.0
     # via graphene
-greenlet==3.0.3
-    # via sqlalchemy
 gunicorn==22.0.0
     # via mlflow
 idna==3.7
@@ -86,7 +90,7 @@ importlib-metadata==4.12.0
     # via
     #   flask
     #   markdown
-    #   mlflow
+    #   mlflow-skinny
 importlib-resources==6.4.0
     # via matplotlib
 itsdangerous==2.1.2
@@ -114,8 +118,10 @@ markupsafe==2.1.1
     #   werkzeug
 matplotlib==3.7.1
     # via mlflow
-mlflow==2.14.1
+mlflow==2.15.1
     # via -r requirements-mlflow.in
+mlflow-skinny==2.15.1
+    # via mlflow
 multidict==6.0.2
     # via
     #   aiohttp
@@ -131,17 +137,17 @@ numpy==1.23.5
     #   scipy
 opentelemetry-api==1.16.0
     # via
-    #   mlflow
+    #   mlflow-skinny
     #   opentelemetry-sdk
 opentelemetry-sdk==1.16.0
-    # via mlflow
+    # via mlflow-skinny
 opentelemetry-semantic-conventions==0.37b0
     # via opentelemetry-sdk
 packaging==21.3
     # via
     #   gunicorn
     #   matplotlib
-    #   mlflow
+    #   mlflow-skinny
 pandas==1.3.5
     # via mlflow
 pillow==10.3.0
@@ -149,11 +155,17 @@ pillow==10.3.0
 protobuf==4.22.3
     # via
     #   -r requirements-mlflow.in
-    #   mlflow
+    #   mlflow-skinny
 psycopg2==2.9.3
     # via -r requirements-mlflow.in
 pyarrow==14.0.1
     # via mlflow
+pyasn1==0.6.0
+    # via
+    #   pyasn1-modules
+    #   rsa
+pyasn1-modules==0.4.0
+    # via google-auth
 pycparser==2.21
     # via cffi
 pyparsing==3.0.9
@@ -167,16 +179,19 @@ python-dateutil==2.8.2
     #   pandas
 pytz==2022.1
     # via
-    #   mlflow
+    #   mlflow-skinny
     #   pandas
 pyyaml==6.0
-    # via mlflow
+    # via mlflow-skinny
 querystring-parser==1.2.4
     # via mlflow
 requests==2.32.0
     # via
+    #   databricks-sdk
     #   docker
-    #   mlflow
+    #   mlflow-skinny
+rsa==4.9
+    # via google-auth
 s3transfer==0.6.0
     # via boto3
 scikit-learn==1.5.0
@@ -200,7 +215,7 @@ sqlalchemy==1.4.39
     #   alembic
     #   mlflow
 sqlparse==0.5.0
-    # via mlflow
+    # via mlflow-skinny
 threadpoolctl==3.1.0
     # via scikit-learn
 typing-extensions==4.11.0
