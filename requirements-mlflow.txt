@@ -44,7 +44,7 @@ cloudpickle==2.1.0
     # via mlflow-skinny
 contourpy==1.0.7
     # via matplotlib
-cryptography==42.0.4
+cryptography==43.0.1
     # via -r requirements-mlflow.in
 cycler==0.11.0
     # via matplotlib
@@ -80,6 +80,8 @@ graphql-core==3.2.3
     #   graphql-relay
 graphql-relay==3.2.0
     # via graphene
+greenlet==3.0.3
+    # via sqlalchemy
 gunicorn==22.0.0
     # via mlflow
 idna==3.7
