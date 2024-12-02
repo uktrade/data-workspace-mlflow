@@ -205,7 +205,6 @@ async def async_main():
                 for method in [
                     "delete",
                     "get",
-                    "head",
                     "options",
                     "patch",
                     "post",
