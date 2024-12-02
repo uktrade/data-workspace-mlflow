@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# requirements:
+# - login to aws
+# - login to aws ecr docker
+
+set -e
+
+if [[ -z "${AWS_PROFILE}" ]]; then
+  echo "You must set the AWS_PROFILE environment variable to the name of your profile. Often this is data-infrastructure-prod."
+  exit 1
+else
+  echo "Using AWS profile $AWS_PROFILE"
+fi
+
+if [ "$1" == "dev" ]; then
+  environment=analysisworkspace-dev
+elif [ "$1" == "staging" ]; then
+  environment=data-workspace-staging
+elif [ "$1" == "prod" ]; then
+  environment=jupyterhub
+else
+  echo "Argument not recognised - valid args are 'dev', 'staging' and 'prod'."
+  exit 1
+fi
+
+if [ "$2" == "" ]; then
+  echo "Team name argument is required"
+  exit 1
+fi
+
+team_name=$2
+
+account_id=$(aws sts get-caller-identity --query Account --output text)
+
+echo "Logging into ECR"
+aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin $account_id.dkr.ecr.eu-west-2.amazonaws.com
+
+echo "Building docker image"
+if [ "$(uname)" == "Darwin" ]; then
+  DOCKER_DEFAULT_PLATFORM=linux/amd64 docker build -t mlflow:latest -f Dockerfile .
+else
+  docker build -t mlflow:latest -f Dockerfile .
+fi
+
+echo "Pushing docker image to ECR for $1"
+docker tag mlflow:latest $account_id.dkr.ecr.eu-west-2.amazonaws.com/$environment-mlflow:master
+docker push $account_id.dkr.ecr.eu-west-2.amazonaws.com/$environment-mlflow:master
+
+echo "Triggering redeployment of webserver for $1"
+aws ecs update-service --cluster $environment --service $environment-mlflow-$team_name --force-new-deployment > /dev/null
+
+echo "Done. Note that the redeployment is asynchronous, and will take a few minutes to complete."
