@@ -95,7 +95,7 @@ importlib-resources==6.4.0
     # via matplotlib
 itsdangerous==2.1.2
     # via flask
-jinja2==3.1.4
+jinja2==3.1.5
     # via
     #   flask
     #   mlflow
